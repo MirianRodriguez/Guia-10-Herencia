@@ -45,15 +45,34 @@ public class Televisor extends Electrodomestico {
         super.crearElectrodomestico();
         System.out.print("Ingrese resolución: ");
         this.resolucion = leer.nextDouble();
-        
-        System.out.println("¿Tiene sintonizador TDT? Y/N: ");
+
+        /*System.out.println("¿Tiene sintonizador TDT? Y/N: ");
         respuesta = leer.next().charAt(0);
         if (respuesta == 'Y') {
             this.sintonizadorTDT = true;
         }else if(respuesta =='N'){
             this.sintonizadorTDT = false;
-        }
-        
+        }*/
+        boolean banderaCarga = true;
+
+        do {
+
+            System.out.print("¿Tiene sintonizador TDT? Y/N: ");
+            respuesta = Character.toUpperCase(leer.next().charAt(0));
+
+            if (respuesta == 'N') {
+                this.sintonizadorTDT = false;
+                banderaCarga = false;
+            } else if (respuesta == 'Y') {
+                this.sintonizadorTDT = true;
+                banderaCarga = false;
+            } else {
+                System.out.print("Respuesta incorrecta, vuelva a intentarlo. ");
+                System.out.println("");
+            }
+
+        } while (banderaCarga);
+
     }
     
     /*Método precioFinal(): este método será heredado y se le sumará la siguiente
